@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Mailov❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffe0f0, #ffe7fa);
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particles span {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+      animation: float 8s infinite ease-in-out;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+    }
+
+    .center {
+      width: 100%;
+      padding: 100px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    .envelope {
+      width: 70vw;
+      max-width: 500px;
+      height: 300px;
+      background: #d48dc1;
+      border-radius: 20px;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transition: transform 1s, opacity 1s;
+    }
+
+    .envelope.open {
+      transform: translateY(-400px) scale(0.5);
+      opacity: 0;
+    }
+
+    .message {
+      display: none;
+      background: white;
+      width: 90vw;
+      max-width: 700px;
+      margin-top: 40px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+      animation: slideUp 1.2s ease forwards;
+      z-index: 3;
+    }
+
+    @keyframes slideUp {
+      0% {
+        transform: translateY(200px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .input-screen {
+      position: fixed;
+      z-index: 5;
+      background: #fff0f8;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .input-screen input {
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .input-screen button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      background: #ff91cc;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .message {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+
+  <div class="input-screen" id="inputScreen">
+    <h2>¿Quién eres?</h2>
+    <input type="text" id="nameInput" placeholder="Escribe tu nombre...">
+    <button onclick="checkName()">Entrar</button>
+  </div>
+
+  <div class="center">
+    <div class="envelope" id="envelope"></div>
+
+    <div class="message" id="message">
+      <h2 style="text-align:center; margin-bottom: 15px;">Para mi Bianca❤️</h2>
+      <p style="text-align:center; white-space: pre-line;">
+Gracias por todo 💗, por ser mi todo, por estar a mi lado siempre pase lo que pase, 
+este regalo te lo estoy haciendo yo,no es una página cualquiera para hacer mensajes,
+ la hice yo, para vos🫶💕, mi amor, mi mayor logro, mailov, mi princesa,
+mi reina, mi todo.
+
+Te pido perdón por hacerte sentir mal muchas veces 😔, tenemos nuestros días malos como tenemos los días buenos.
+Nunca quiero terminar con esto, es lo mejor que me pasó en la vida y lo que me va a pasar para toda la vida entera.
+
+Si te tomás el esfuerzo de leer todo esto, te quiero decir que amo tu esfuerzo por aguantarme.
+Sé que no es fácil, pero con vos puedo ser vulnerable, puedo ser todo, puedo contarte mis sentimientos,
+que es algo que nunca jamás hice en la vida.
+
+A veces te cansan mis celos, pero es algo que nunca sentí, y lo que siento con vos también.
+Es algo especial para mí en serio. Puedo ser el nene que no pude ser, puedo demostrar sentimientos
+que jamás podré mostrar a cualquier otro ser vivo.
+
+De verdad te aprecio y amo mucho, te adoro, y te quiero a mi lado siempre 🫶💕💗.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function checkName() {
+      const name = document.getElementById('nameInput').value.trim().toLowerCase();
+      if (name === 'bianca') {
+        document.getElementById('inputScreen').style.display = 'none';
+        const envelope = document.getElementById('envelope');
+        envelope.classList.add('open');
+        setTimeout(() => {
+          document.getElementById('message').style.display = 'block';
+        }, 1200);
+      } else {
+        alert('No puedes ingresar, solo alguien especial para mi.');
+      }
+    }
+
+    // Partículas flotantes
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const span = document.createElement('span');
+      span.style.left = Math.random() * 100 + '%';
+      span.style.animationDuration = 5 + Math.random() * 5 + 's';
+      span.style.background = ['#ffc0cb', '#ffb6c1', '#ff69b4', '#ff1493'][Math.floor(Math.random()*4)];
+      span.style.transform = `scale(${Math.random() + 0.5})`;
+      container.appendChild(span);
+    }
+  </script>
+</body>
+</html>
